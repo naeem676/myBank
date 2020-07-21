@@ -4,9 +4,91 @@
           <meta charset="UTF-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
           <title>myBank limited</title>
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
           <link rel="stylesheet" href="style.css">
 </head>
 <body>
-          <h1>Welcome to NAEEM Bank Limited</h1>
+          <div id="login-area">
+                    <h1 class="text-center">Welcome to NAEEM Bank Limited</h1>
+                    <div class="submit-area">
+                              <h1>Login</h1>
+                              <input type="text" class="form-control" placeholder="text"><br>
+                              <input type="password" class="form-control"  placeholder="password"><br>
+                              <button id="login" class="btn btn-success">Enter</button>
+                    </div>
+          </div>
+          <div id="Transaction-Area">
+                    <div class="row">
+                              <div class="col-md-4 ">
+                                       <div class="Deposit status">
+                                                 <h5>Deposit</h5>
+                                                 <h2>$<span id="currentDeposit">00</span></h2>
+                                                 
+                                       </div>
+                                        
+                              </div>
+                              <div class="col-md-4 ">
+                                        <div class="Withdraw status">
+                                                  <h5>Withdraw</h5>
+                                                  <h2>$00</h2>
+                                        </div>
+                                        
+                              </div>
+                              <div class="col-md-4">
+                                        <div class="Balance status">
+                                                  <h5>Balance</h5>
+                                                  <h2>$00</h2>
+                                       
+                                        </div>
+                              </div>
+                    </div>
+                    <div class="row">
+                              <div class="col-md-6">
+                                        <div class="submit-area">
+                                                  <h4>Deposit</h4>
+                                                  <input id="deposit-amount" type="text" class="form-control" placeholder="$ amount your want to Deposit"><br>
+                                                  <button id="addDeposit" class="btn btn-success">Deposit</button>
+                                        </div>
+                              </div>
+                              
+                              <div class="col-md-6">
+                                        <div class="submit-area">
+                                                  <h4>Withdraw</h4>
+                                                  <input type="text" class="form-control"  placeholder="$ amount your want to Withdraw"><br>
+                                                  <button class="btn btn-success">Withdraw</button>
+                                        </div>
+                                        
+                              </div>
+                    </div>
+
+          </div>
+
+
+
+
+
+          <script>
+                    //login btn event handler
+                    const loginBtn = document.getElementById("login");
+                    loginBtn.addEventListener("click", function(){
+                             const logInArea = document.getElementById("login-area");
+                             logInArea.style.display = "none";
+                             const TransactionArea = document.getElementById("Transaction-Area");
+                             TransactionArea.style.display = "block";
+                    })
+                    //Deposit btn event handler
+                    const depositBtn = document.getElementById("addDeposit");
+                    depositBtn.addEventListener("click", function(){
+                              const depositAmount = document.getElementById("deposit-amount").value;
+                              const depositNumber = parseFloat(depositAmount);
+
+                              const currentDeposit = document.getElementById("currentDeposit").innerText;
+                              const currentDepositNumber = parseFloat(currentDeposit);
+                              const totalDeposit = depositNumber + currentDepositNumber;
+
+                              document.getElementById("currentDeposit").innerText = totalDeposit;
+                              document.getElementById("deposit-amount").value = "";
+                    })
+          </script>
 </body>
 </html>
